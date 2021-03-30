@@ -6,4 +6,4 @@ require "vendor/autoload.php";
 
 new AutoloadedClass();
 
-echo  "Autoloading Works";
+echo  "Autoloading Works" . PHP_EOL;
