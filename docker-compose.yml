@@ -1,10 +1,16 @@
 version: "3.6"
 
 services:
-
   php-cli:
     build:
       context: ./docker/php-cli
     volumes:
-      - ./mnt/code
+      - ./:./mnt/code
     working_dir: /mnt/code
+  php-fpm:
+      build:
+        context: ./docker/php-fpm
+      volumes:
+        - ./:./mnt/code:cached
+        - ./docker/php-fpm/php-custom.ini:/usr/local/etc/php/conf.d/php-custom.ini
+      working_dir: /mnt/code
