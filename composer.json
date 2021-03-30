@@ -5,14 +5,12 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "flyeralarm\\baseproject\\": [
-                "src"
-            ]
+            "jiintaan\\basicphp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "flyeralarm\\baseproject\\": [
+            "jiintaan\\basicphp\\": [
                 "tests"
             ]
         }
