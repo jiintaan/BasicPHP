@@ -14,3 +14,16 @@ services:
         - ./:/mnt/code:cached
         - ./docker/php-fpm/php-custom.ini:/usr/local/etc/php/conf.d/php-custom.ini
       working_dir: /mnt/code
+  mysql:
+    build:
+      context: ./docker/mysql
+    volumes:
+      - ./docker/mysql/startup-scripts:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: database
+    ports:
+      - 3310:3306
