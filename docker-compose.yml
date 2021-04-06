@@ -7,6 +7,8 @@ services:
     volumes:
       - ./:/mnt/code
     working_dir: /mnt/code
+    environment:
+
   php-fpm:
       build:
         context: ./docker/php-fpm
@@ -26,4 +28,12 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: database
     ports:
-      - 3310:3306
+      - 3313:3306
+  nginx:
+      image: nginx:1.19.9
+      container_name: nginx
+      volumes:
+        - ./docker/nginx/conf.d:/etc/nginx/conf.d
+        - ./public/:/mnt/code/public:ro
+      ports:
+        - 808:80
