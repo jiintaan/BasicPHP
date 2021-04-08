@@ -1,0 +1,15 @@
+<phpunit backupGlobals="false" bootstrap="./bootstrap.php" beStrictAboutTestsThatDoNotTestAnything="true" beStrictAboutOutputDuringTests="true" beStrictAboutTodoAnnotatedTests="true" beStrictAboutCoversAnnotation="true" forceCoversAnnotation="true" verbose="true">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../../src</directory>
+            <exclude>
+                <directory suffix=".php">../../src/verify</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
