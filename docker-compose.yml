@@ -1,22 +1,23 @@
 version: "3.6"
 
 services:
-  php-cli:
+  basicphp-php-cli:
     build:
       context: ./docker/php-cli
     volumes:
       - ./:/mnt/code
     working_dir: /mnt/code
     environment:
+      XDEBUG_MODE: coverage
 
-  php-fpm:
+  basicphp-php-fpm:
       build:
         context: ./docker/php-fpm
       volumes:
         - ./:/mnt/code:cached
         - ./docker/php-fpm/php-custom.ini:/usr/local/etc/php/conf.d/php-custom.ini
       working_dir: /mnt/code
-  mysql:
+  basicphp-mysql:
     build:
       context: ./docker/mysql
     volumes:
@@ -29,9 +30,9 @@ services:
       MYSQL_DATABASE: database
     ports:
       - 3313:3306
-  nginx:
+  basicphp-nginx:
       image: nginx:1.19.9
-      container_name: nginx
+      container_name: basicphp-nginx
       volumes:
         - ./docker/nginx/conf.d:/etc/nginx/conf.d
         - ./public/:/mnt/code/public:ro
