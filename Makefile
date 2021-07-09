@@ -33,14 +33,10 @@ composer_autoload: ## generate composer autoload classmap
 composer_autoload_prd: ## generate composer autoload classmap
 	$(COMPOSER) dump-autoload --no-dev
 
-dependency_test:
-	php $(PUBLIC_DIR)/TestEntryPoint.php
-	php $(PUBLIC_DIR)/TestAutoloading.php
-
-test_unit: ### Docker runs unit tests
+test_unit: composer_autoload ### Docker runs unit tests
 	@echo ""
 	@echo "+++ Run unit tests (old archiving) +++"
-	sudo mkdir -p $(PROJECT_ROOT_DIR)/reports
+	mkdir -p $(PROJECT_ROOT_DIR)/reports
 	@$(PHPUNIT) -c ./tests/unit/config/phpunit.xml $(ARGS)
 
 test_unit_backup: ### Docker runs unit tests
