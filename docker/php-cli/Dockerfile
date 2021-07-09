@@ -1,4 +1,4 @@
-FROM php:cli-alpine
+FROM php:7.4-cli-alpine
 
 RUN apk --no-cache add pcre-dev ${PHPIZE_DEPS} \
     && docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo pdo_mysql \
